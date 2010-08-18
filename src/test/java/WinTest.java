@@ -36,7 +36,7 @@ public class WinTest {
 		
 		assertThat(column, is(new char[] {'X','X',0}));
 	}
-	
+	 
 	@Test
 	public void shouldWinWhenTwoDownInFirstColumn() throws Exception {
 		board[0][0] = 'X';
