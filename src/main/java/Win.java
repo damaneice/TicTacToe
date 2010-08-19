@@ -92,6 +92,14 @@ public class Win {
 	public char[][] getBoard() {
 		return board;
 	}
+
+	public char[] extractUpDiagonal() {
+		char [] diagonal = new char[3];
+		for (int x = 0, y = 2; x < board.length; x++, y--){
+			diagonal[x] = board[x][y];
+		}
+		return diagonal;
+	}
 	
 
 }

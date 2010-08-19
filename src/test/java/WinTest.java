@@ -59,6 +59,16 @@ public class WinTest {
 		char[] diagonal = w.extractDownDiagonal();
 		assertThat(diagonal, is(new char[]{'X', 0, 'X'}));
 	}
+	
+	@Test
+	public void shouldExtractUpDiagonal() throws Exception {
+		board[0][2] = 'X';
+		board[1][1] = 'X';
+		w = new Win(board);
+		
+		char[] diagonal = w.extractUpDiagonal();
+		assertThat(diagonal, is(new char[]{'X', 'X', 0}));
+	}
 
 	
 
