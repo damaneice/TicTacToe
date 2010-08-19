@@ -1,4 +1,5 @@
 import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.*;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
@@ -9,21 +10,13 @@ public class WinTest {
 	private Win w;
  	
 	@Test
-	public void shouldWinWhenTwoInARowAcross() throws Exception {
+	public void shouldWinWhenThreeDown() throws Exception {
 		board[0][0] = 'X';
 		board[0][1] = 'X';
-		w = new Win(board);
-
-		assertThat(w.win(), is(true));
-	}
-
-	@Test
-	public void shouldWinWhenTwoAcrossNotInARow() throws Exception {
-		board[0][0] = 'X';
 		board[0][2] = 'X';
 		w = new Win(board);
-	
-		assertThat(w.win(), is(true));
+
+		assertThat(w.win('X'), is(true));
 	}
 	
 	@Test
@@ -38,22 +31,35 @@ public class WinTest {
 	}
 	 
 	@Test
-	public void shouldWinWhenTwoDownInFirstColumn() throws Exception {
+	public void shouldWinWhenThreeAcross() throws Exception {
 		board[0][0] = 'X';
 		board[1][0] = 'X';
+		board[2][0] = 'X';
 		w = new Win(board);
 	
-		assertThat(w.win(), is(true));
+		assertThat(w.win('X'), is(true));
 	}
 	
 	@Test
-	public void shouldWinWhenTwoDownInCenterColumn() throws Exception {
-		board[0][1] = 'X';
+	public void shouldWinWhenThreeDiagonalDown() throws Exception {
+		board[0][0] = 'X';
 		board[1][1] = 'X';
+		board[2][2] = 'X';
 		w = new Win(board);
-	
-		assertThat(w.win(), is(true));
+		
+		assertThat(w.win('X'), is(true));
 	}
+	
+	@Test
+	public void shouldExtractDownDiagonal() throws Exception {
+		board[0][0] = 'X';
+		board[2][2] = 'X';
+		w = new Win(board);
+		
+		char[] diagonal = w.extractDownDiagonal();
+		assertThat(diagonal, is(new char[]{'X', 0, 'X'}));
+	}
+
 	
 
 	

@@ -6,36 +6,44 @@ public class Win {
 		this.board = board;
 	}
 
-	public boolean win() {
+	public boolean win(char typeOfMark) {
 		
-		for(int columnNumber = 0; columnNumber < board.length; columnNumber++){
-			char[] column = extractColumn(columnNumber);
-			if(winInSection(column))
+		if (checkColumnForWin(typeOfMark))
+			return true;
+		
+		if (checkRowForWin(typeOfMark))
+			return true;
+		
+		if (checkDownDiagonalForWin(typeOfMark))
+			return true;
+		
+		return false;
+	}
+
+	private boolean checkDownDiagonalForWin(char typeOfMark) {
+			char[] diagonal = extractDownDiagonal();
+			if(isWinInSection(diagonal, typeOfMark))
 				return true;
-		}
-		
+			
+		return false;
+	}
+
+	private boolean checkRowForWin(char typeOfMark) {
 		for(int rowNumber = 0; rowNumber < board.length; rowNumber++){
 			char[] row = extractRow(rowNumber);
-			if(winInSection(row))
+			if(isWinInSection(row, typeOfMark))
 				return true;
 		}
-		
 		return false;
 	}
 
-	private boolean canWinInCenterColumn() {
-		// TODO Auto-generated method stub
+	private boolean checkColumnForWin(char typeOfMark) {
+		for(int columnNumber = 0; columnNumber < board.length; columnNumber++){
+			char[] column = extractColumn(columnNumber);
+			if(isWinInSection(column, typeOfMark))
+				return true;
+		}
 		return false;
-	}
-
-	private boolean canWinInLeftColumn() {
-		char[] column = extractColumn(0);
-		return winInSection(column);
-	}
-	
-	private boolean canWinInTopRow() {
-		char[] row = extractRow(0);
-		return winInSection(row);
 	}
 
 	private char[] extractRow(int rowNumber) {
@@ -43,11 +51,10 @@ public class Win {
 	}
 		
 
-	private boolean winInSection(char[] column) {
-		int numberOfMarks = countOfNumberOfMarks(column);
-		int numberOfOpenSpaces = countNumberOfSpaces(column);
+	private boolean isWinInSection(char[] column, char typeOfMark) {
+		int numberOfMarks = countOfNumberOfMarks(column, typeOfMark);
 		
-		if (numberOfMarks == 2 && numberOfOpenSpaces == 1)
+		if (numberOfMarks == 3 )
 			return true;
 		return false;
 	}
@@ -60,20 +67,18 @@ public class Win {
 		return column;
 	}
 	
-	private int countNumberOfSpaces(char[] boardSection) {
-		int numberOfOpenSpaces = 0;
-		for (char c : boardSection) {
-			if (c == 0) {
-				numberOfOpenSpaces++;
-			}
+	public char[] extractDownDiagonal() {
+		char [] diagonal = new char[3];
+		for (int i = 0; i < board.length; i++){
+			diagonal[i] = board[i][i];
 		}
-		return numberOfOpenSpaces;
+		return diagonal;
 	}
-
-	private int countOfNumberOfMarks(char[] boardSection) {
+	
+	private int countOfNumberOfMarks(char[] boardSection, char typeOfMark) {
 		int numberOfMarks = 0;
 		for (char c : boardSection) {
-			if (c == 'X') {
+			if (c == typeOfMark) {
 				numberOfMarks++;
 			}
 		}
