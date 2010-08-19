@@ -1,8 +1,8 @@
 public class Win {
 
-	private char[][] board = new char[3][3];
+	private Board board;
 	
-	public Win(char[][] board){
+	public Win(Board board){
 		this.board = board;
 	}
 
@@ -21,7 +21,7 @@ public class Win {
 	}
 
 	private boolean checkDownDiagonalForWin(char typeOfMark) {
-			char[] diagonal = extractDownDiagonal();
+			char[] diagonal = board.extractDownDiagonal();
 			if(isWinInSection(diagonal, typeOfMark))
 				return true;
 			
@@ -29,8 +29,8 @@ public class Win {
 	}
 
 	private boolean checkRowForWin(char typeOfMark) {
-		for(int rowNumber = 0; rowNumber < board.length; rowNumber++){
-			char[] row = extractRow(rowNumber);
+		for(int rowNumber = 0; rowNumber < board.getBoard().length; rowNumber++){
+			char[] row = board.extractRow(rowNumber);
 			if(isWinInSection(row, typeOfMark))
 				return true;
 		}
@@ -38,18 +38,13 @@ public class Win {
 	}
 
 	private boolean checkColumnForWin(char typeOfMark) {
-		for(int columnNumber = 0; columnNumber < board.length; columnNumber++){
-			char[] column = extractColumn(columnNumber);
+		for(int columnNumber = 0; columnNumber < board.getBoard().length; columnNumber++){
+			char[] column = board.extractColumn(columnNumber);
 			if(isWinInSection(column, typeOfMark))
 				return true;
 		}
 		return false;
 	}
-
-	private char[] extractRow(int rowNumber) {
-		return board[rowNumber];
-	}
-		
 
 	private boolean isWinInSection(char[] column, char typeOfMark) {
 		int numberOfMarks = countOfNumberOfMarks(column, typeOfMark);
@@ -59,22 +54,6 @@ public class Win {
 		return false;
 	}
 
-	public char[] extractColumn(int columnNumber) {
-		char [] column = new char[3];
-		for (int i = 0; i < board.length; i++){
-			column[i] = board[i][columnNumber];
-		}
-		return column;
-	}
-	
-	public char[] extractDownDiagonal() {
-		char [] diagonal = new char[3];
-		for (int i = 0; i < board.length; i++){
-			diagonal[i] = board[i][i];
-		}
-		return diagonal;
-	}
-	
 	private int countOfNumberOfMarks(char[] boardSection, char typeOfMark) {
 		int numberOfMarks = 0;
 		for (char c : boardSection) {
@@ -84,22 +63,5 @@ public class Win {
 		}
 		return numberOfMarks;
 	}
-
-	public void setBoard(char[][] board) {
-		this.board = board;
-	}
-
-	public char[][] getBoard() {
-		return board;
-	}
-
-	public char[] extractUpDiagonal() {
-		char [] diagonal = new char[3];
-		for (int x = 0, y = 2; x < board.length; x++, y--){
-			diagonal[x] = board[x][y];
-		}
-		return diagonal;
-	}
-	
 
 }
