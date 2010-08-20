@@ -53,6 +53,15 @@ public class WinTest {
 		assertThat(w.win('X'), is(true));
 	}
 	
+	@Test
+	public void shouldWinWhenThreeDiagonalUp() throws Exception {
+		board.getBoard()[0][2] = 'X';
+		board.getBoard()[1][1] = 'X';
+		board.getBoard()[2][0] = 'X';
+		
+		assertThat(w.win('X'), is(true));
+	}
+	
 	
 
 	
