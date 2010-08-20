@@ -38,4 +38,14 @@ public class Board {
 		}
 		return diagonal;
 	}
+	
+	public int countOfNumberOfMarks(char[] boardSection, char typeOfMark) {
+		int numberOfMarks = 0;
+		for (char c : boardSection) {
+			if (c == typeOfMark) {
+				numberOfMarks++;
+			}
+		}
+		return numberOfMarks;
+	}
 }

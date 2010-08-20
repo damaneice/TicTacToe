@@ -47,21 +47,10 @@ public class Win {
 	}
 
 	private boolean isWinInSection(char[] column, char typeOfMark) {
-		int numberOfMarks = countOfNumberOfMarks(column, typeOfMark);
+		int numberOfMarks = board.countOfNumberOfMarks(column, typeOfMark);
 		
 		if (numberOfMarks == 3 )
 			return true;
 		return false;
 	}
-
-	private int countOfNumberOfMarks(char[] boardSection, char typeOfMark) {
-		int numberOfMarks = 0;
-		for (char c : boardSection) {
-			if (c == typeOfMark) {
-				numberOfMarks++;
-			}
-		}
-		return numberOfMarks;
-	}
-
 }
