@@ -1,4 +1,3 @@
-import java.util.List;
 
 
 public class Board {
@@ -50,4 +49,4 @@ public class Board {
 		}
 		return numberOfMarks;
 	}
-}
+}	
