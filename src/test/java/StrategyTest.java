@@ -1,4 +1,5 @@
 import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.equalTo;	
 import static org.hamcrest.core.Is.is;
 import org.junit.Test;
 
@@ -92,6 +93,28 @@ public class StrategyTest {
 		
 		assertThat(coordinates.getX(), is(1));
 		assertThat(coordinates.getY(), is(1));
+	}
+	
+	@Test
+	public void shouldFindMoveToCreateFork() throws Exception {
+		strategy = new Strategy();
+		board.getBoard()[0][2] = 'X';
+		board.getBoard()[2][0] = 'X';
+		board.extractAllRowsColumns();
+		Coordinates coordinates = findMoveToCreateFork(board);
+		assertThat(coordinates, is(new Coordinates(0,0)));
+		
+	}
+
+	private Coordinates findMoveToCreateFork(Board board) {
+		findEmptyPostionsInRow(0);
+		
+		return null;
+	}
+
+	private List<Coordinates> findEmptyPostionsInRow(int i) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
