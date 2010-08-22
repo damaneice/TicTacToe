@@ -13,10 +13,26 @@ public class TicTacToe {
 	}
 	
 	public void play(){
-		while(!gameOver.win('0') || !gameOver.win('X')){
-			findNextMove();
+		while(!gameOver.isBoardFull() || !gameOver.win('0') || !gameOver.win('X')){
+			move();
 			gameOver.incrementNumberOfMoves();
 		}
+	}
+	
+	public void move(){
+		Position move = findNextMove();
+		if(move != null){
+			computerMark(move);
+		}
+	}
+	
+	
+	public void computerMark(Position position){
+		board.getBoard()[position.getX()][position.getY()] = 'X';
+	}
+	
+	public void playerMark(Position position){
+		board.getBoard()[position.getX()][position.getY()] = 'O';
 	}
 	
 	public Position findNextMove() {
@@ -36,7 +52,11 @@ public class TicTacToe {
 		if (position != null){
 			return position;
 		} 
-		return center.playTheCenter();
+		position = center.playTheCenter();
+		if(position != null){
+			return position;
+		}
+		return position;
 	}
 
 	public void setBoard(Board board) {

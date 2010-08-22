@@ -59,4 +59,8 @@ public class GameOver {
 	public void incrementNumberOfMoves() {
 		numberOfMoves++;
 	}
+	
+	public boolean isBoardFull(){
+		return numberOfMoves == 9;
+	}
 }

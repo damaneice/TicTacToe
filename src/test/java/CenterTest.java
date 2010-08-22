@@ -9,7 +9,6 @@ public class CenterTest {
 		Center center = new Center();
 		Position expectedPosition = new Position(1,1);
 		
-		assertThat(center.playTheCenter().getX(), is(expectedPosition.getX()));
-		assertThat(center.playTheCenter().getY(), is(expectedPosition.getY()));
+		assertThat(center.playTheCenter(), is(expectedPosition));
 	}
 }
