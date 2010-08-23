@@ -6,7 +6,10 @@ public class TicTacToe {
 	private Fork fork = new Fork();
 	private GameOver gameOver;
 	private Center center = new Center();
-
+	private OppositeCorner oppositeCorner = new OppositeCorner();
+	private EmptyCorner emptyCorner = new EmptyCorner();
+	private EmptySide emptySide = new EmptySide();
+	
 	public TicTacToe(Board board){
 		this.board = board;
 		gameOver = new GameOver(board);
@@ -36,19 +39,19 @@ public class TicTacToe {
 	}
 	
 	public Position findNextMove() {
-		Position position = winningMove.findWinningMove(getBoard());
+		Position position = winningMove.findWinningMove(board);
 		if (position != null){
 			return position;
 		} 
-		position = block.findBlockMove(getBoard());
+		position = block.findBlockMove(board);
 		if (position != null){
 			return position;
 		} 
-		position = fork.createFork(getBoard());
+		position = fork.createFork(board);
 		if (position != null){
 			return position;
 		} 
-		position = fork.blockFork(getBoard());
+		position = fork.blockFork(board);
 		if (position != null){
 			return position;
 		} 
@@ -56,14 +59,14 @@ public class TicTacToe {
 		if(position != null){
 			return position;
 		}
-		return position;
-	}
-
-	public void setBoard(Board board) {
-		this.board = board;
-	}
-
-	public Board getBoard() {
-		return board;
+		position = oppositeCorner.playOppositeCorner(board);
+		if(position != null){
+			return position;
+		}
+		position = emptyCorner.markEmptyCorner(board);
+		if(position != null){
+			return position;
+		}
+		return emptySide.markMiddleSquareOnEmptySide(board);
 	}
 }

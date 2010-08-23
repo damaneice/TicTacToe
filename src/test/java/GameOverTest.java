@@ -24,16 +24,6 @@ public class GameOverTest {
 
 		assertThat(w.win('X'), is(true));
 	}
-	
-	@Test
-	public void shouldExtractColumn() throws Exception {
-		board.getBoard()[0][0] = 'X';
-		board.getBoard()[1][0] = 'X';
-		
-		char[] column = board.extractColumn(0);
-		
-		assertThat(column, is(new char[] {'X','X',0}));
-	}
 	 
 	@Test
 	public void shouldWinWhenThreeAcross() throws Exception {

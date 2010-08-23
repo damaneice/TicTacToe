@@ -15,16 +15,16 @@ public class Board {
 		return board;
 	}
 	
-	public char[] extractRow(int rowNumber) {
-		return getBoard()[rowNumber];
+	public char[] extractColumn(int columnNumber) {
+		return getBoard()[columnNumber];
 	}
 
-	public char[] extractColumn(int columnNumber) {
-		char [] column = new char[3];
+	public char[] extractRow(int rowNumber) {
+		char [] row = new char[3];
 		for (int i = 0; i < getBoard().length; i++){
-			column[i] = getBoard()[i][columnNumber];
+			row[i] = getBoard()[i][rowNumber];
 		}
-		return column;
+		return row;
 	}
 	
 	public char[] extractDownDiagonal() {
