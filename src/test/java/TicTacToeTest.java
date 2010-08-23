@@ -15,8 +15,7 @@ public class TicTacToeTest {
 		ticTacToe = new TicTacToe(board);
 		Position coordinates = ticTacToe.findNextMove();
 
-		assertThat(coordinates.getX(), is(0));
-		assertThat(coordinates.getY(), is(2));
+		assertThat(coordinates, is(new Position(0,2)));
 	}
 
 	@Test
@@ -26,8 +25,7 @@ public class TicTacToeTest {
 		ticTacToe = new TicTacToe(board);
 		Position coordinates = ticTacToe.findNextMove();
 
-		assertThat(coordinates.getX(), is(2));
-		assertThat(coordinates.getY(), is(1));
+		assertThat(coordinates, is(new Position(2,1)));
 	}
 	
 	@Test
@@ -37,8 +35,7 @@ public class TicTacToeTest {
 		ticTacToe = new TicTacToe(board);
 		Position coordinates = ticTacToe.findNextMove();
 		
-		assertThat(coordinates.getX(), is(2));
-		assertThat(coordinates.getY(), is(2));
+		assertThat(coordinates, is(new Position(2,2)));
 	}
 	
 	@Test
@@ -48,8 +45,7 @@ public class TicTacToeTest {
 		ticTacToe = new TicTacToe(board);
 		Position coordinates = ticTacToe.findNextMove();
 		
-		assertThat(coordinates.getX(), is(1));
-		assertThat(coordinates.getY(), is(1));
+		assertThat(coordinates, is(new Position(1,1)));
 	}
 	
 	@Test
@@ -58,9 +54,8 @@ public class TicTacToeTest {
 		board.getBoard()[0][1] = 'O';
 		ticTacToe = new TicTacToe(board);
 		Position coordinates = ticTacToe.findNextMove();
-		
-		assertThat(coordinates.getX(), is(0));
-		assertThat(coordinates.getY(), is(2));
+
+		assertThat(coordinates, is(new Position(0,2)));
 	}
 	
 	@Test
@@ -70,8 +65,7 @@ public class TicTacToeTest {
 		ticTacToe = new TicTacToe(board);
 		Position coordinates = ticTacToe.findNextMove();
 
-		assertThat(coordinates.getX(), is(2));
-		assertThat(coordinates.getY(), is(1));
+		assertThat(coordinates, is(new Position(2,1)));
 	}
 	
 	@Test
@@ -81,8 +75,7 @@ public class TicTacToeTest {
 		ticTacToe = new TicTacToe(board);
 		Position coordinates = ticTacToe.findNextMove();
 		
-		assertThat(coordinates.getX(), is(2));
-		assertThat(coordinates.getY(), is(2));
+		assertThat(coordinates, is(new Position(2,2)));
 	}
 	
 	@Test
@@ -92,7 +85,6 @@ public class TicTacToeTest {
 		ticTacToe = new TicTacToe(board);
 		Position positon = ticTacToe.findNextMove();
 		
-		assertThat(positon.getX(), is(1));
-		assertThat(positon.getY(), is(1));
+		assertThat(positon, is(new Position(1,1)));
 	}
 }

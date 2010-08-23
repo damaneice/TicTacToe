@@ -52,4 +52,16 @@ public class Board {
 		}
 		return numberOfMarks;
 	}
+	
+	public void print() {
+		for (int y = 0; y < board.length; y++) {
+			for (int x = 0; x < board.length; x++) {
+				System.out.print(board[x][y]);
+				if((x+1)%3 != 0) {
+					System.out.print(" | ");
+				}
+			}
+			System.out.println();
+		}
+	}
 }	

@@ -9,6 +9,9 @@ public class TicTacToe {
 	private OppositeCorner oppositeCorner = new OppositeCorner();
 	private EmptyCorner emptyCorner = new EmptyCorner();
 	private EmptySide emptySide = new EmptySide();
+	private UserInput userInput = new UserInput();
+	
+  
 	
 	public TicTacToe(Board board){
 		this.board = board;
@@ -17,15 +20,25 @@ public class TicTacToe {
 	
 	public void play(){
 		while(!gameOver.isBoardFull() || !gameOver.win('0') || !gameOver.win('X')){
-			move();
-			gameOver.incrementNumberOfMoves();
+			computerMove();
+			board.print();
+			playerMove();
 		}
 	}
 	
-	public void move(){
+	public void playerMove() {
+		Position userMove = userInput.userMove();
+		if (userMove != null) {
+			playerMark(userMove);
+			gameOver.incrementNumberOfMoves();
+		}
+	}
+
+	public void computerMove(){
 		Position move = findNextMove();
 		if(move != null){
 			computerMark(move);
+			gameOver.incrementNumberOfMoves();
 		}
 	}
 	

@@ -87,12 +87,20 @@ public class Fork {
 	
 	public Position blockFork(Board board){
 		List<Position> potentialForkPositionsWithDuplicates = findMoveToCreateFork(board, 'O');
-		return forkPositions(potentialForkPositionsWithDuplicates).get(0);
+		List<Position> forkPositions = forkPositions(potentialForkPositionsWithDuplicates);
+		if (!forkPositions.isEmpty()) {
+			return forkPositions.get(0);
+		}
+		return null;
 	}
 	
 	public Position createFork(Board board) {
 		List<Position> potentialForkPositionsWithDuplicates = findMoveToCreateFork(board, 'X');
-		return forkPositions(potentialForkPositionsWithDuplicates).get(0);
+		List<Position> forkPositions = forkPositions(potentialForkPositionsWithDuplicates);
+		if (!forkPositions.isEmpty()) {
+			return forkPositions.get(0);
+		}
+		return null;
 	}
 
 	private List<Position> findMoveToCreateFork(Board board, char mark) {
