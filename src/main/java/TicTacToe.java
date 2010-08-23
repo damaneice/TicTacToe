@@ -19,9 +19,13 @@ public class TicTacToe {
 	}
 	
 	public void play(){
-		while(!gameOver.isBoardFull() || !gameOver.win('0') || !gameOver.win('X')){
+		while(!gameOver.isBoardFull() && !gameOver.win('0') && !gameOver.win('X')){
 			computerMove();
 			board.print();
+			if (gameOver.win('X')) {
+				System.out.println("Game Over");
+				break;
+			}
 			playerMove();
 		}
 	}
@@ -36,6 +40,7 @@ public class TicTacToe {
 
 	public void computerMove(){
 		Position move = findNextMove();
+		System.out.println(move);
 		if(move != null){
 			computerMark(move);
 			gameOver.incrementNumberOfMoves();
@@ -68,7 +73,7 @@ public class TicTacToe {
 		if (position != null){
 			return position;
 		} 
-		position = center.playTheCenter();
+		position = center.playTheCenter(board);
 		if(position != null){
 			return position;
 		}

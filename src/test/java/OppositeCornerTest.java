@@ -24,10 +24,9 @@ public class OppositeCornerTest {
 	
 	@Test
 	public void shouldPlayCenterColumn() throws Exception {
-		board.getBoard()[1][1] = 'X';
-		board.getBoard()[0][0] = 'O';
 		board.getBoard()[1][0] = 'X';
+		board.getBoard()[2][2] = 'O';
 		
-		assertThat(oppositeCorner.playOppositeCorner(board), is(new Position(0,1)));
+		assertThat(oppositeCorner.playOppositeCorner(board), is(new Position(1,2)));
 	}
 }

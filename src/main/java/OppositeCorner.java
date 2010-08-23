@@ -9,15 +9,65 @@ public class OppositeCorner {
 	}
 
 	private Position findOppositeCornerMove(Board board, Position cornerMark) {
-		int locationX = cornerMark.getX() + 1;
-		char oppositeCorner = board.getBoard()[locationX][cornerMark.getY()]; 
-		if (oppositeCorner == 0){
-			return new Position(locationX, cornerMark.getY());
+		if (new Position(0,0).equals(cornerMark)) {
+			return findOppositeCornerForTopLeft(board);
 		}
-		int locationY = cornerMark.getY() + 1;
-		oppositeCorner = board.getBoard()[cornerMark.getX()][locationY];
+		if (new Position(2,0).equals(cornerMark)) {
+			return findOppositeCornerForTopRight(board);
+		}
+		if (new Position(0,2).equals(cornerMark)) {
+			return findOppositeCornerForBottomLeft(board);
+		}
+		if (new Position(2,2).equals(cornerMark)) {
+			return findOppositeCornerForBottomRight(board);
+		}
+		return null;
+	}
+
+	private Position findOppositeCornerForBottomRight(Board board) {
+		char oppositeCorner = board.getBoard()[1][2]; 
 		if (oppositeCorner == 0){
-			return new Position(cornerMark.getX(), locationY);
+			return new Position(1, 2);
+		}
+		oppositeCorner = board.getBoard()[2][1];
+		if (oppositeCorner == 0){
+			return new Position(2, 1);
+		}
+		return null;
+	}
+
+	private Position findOppositeCornerForBottomLeft(Board board) {
+		char oppositeCorner = board.getBoard()[2][1]; 
+		if (oppositeCorner == 0){
+			return new Position(2, 1);
+		}
+		oppositeCorner = board.getBoard()[0][1];
+		if (oppositeCorner == 0){
+			return new Position(0, 1);
+		}
+		return null;
+	}
+
+	private Position findOppositeCornerForTopRight(Board board) {
+		char oppositeCorner = board.getBoard()[1][0]; 
+		if (oppositeCorner == 0){
+			return new Position(1, 0);
+		}
+		oppositeCorner = board.getBoard()[2][1];
+		if (oppositeCorner == 0){
+			return new Position(2, 1);
+		}
+		return null;
+	}
+
+	private Position findOppositeCornerForTopLeft(Board board) {
+		char oppositeCorner = board.getBoard()[1][0]; 
+		if (oppositeCorner == 0){
+			return new Position(1, 0);
+		}
+		oppositeCorner = board.getBoard()[0][1];
+		if (oppositeCorner == 0){
+			return new Position(0, 1);
 		}
 		return null;
 	}

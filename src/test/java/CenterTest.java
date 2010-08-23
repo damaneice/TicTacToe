@@ -1,6 +1,7 @@
 import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertNull;
 
 
 public class CenterTest {
@@ -9,6 +10,14 @@ public class CenterTest {
 		Center center = new Center();
 		Position expectedPosition = new Position(1,1);
 		
-		assertThat(center.playTheCenter(), is(expectedPosition));
+		assertThat(center.playTheCenter(new Board()), is(expectedPosition));
+	}
+	
+	@Test
+	public void shouldNotPlayInCenter() throws Exception {
+		Center center = new Center();
+		Board board = new Board();
+		board.getBoard()[1][1] = 'X'; 
+		assertNull(center.playTheCenter(board));
 	}
 }
