@@ -19,7 +19,7 @@ public class TicTacToe {
 	}
 	
 	public void play(){
-		while(!gameOver.isBoardFull() && !gameOver.win('0') && !gameOver.win('X')){
+		while(!gameOver.isBoardFull()){
 			computerMove();
 			board.print();
 			if (gameOver.win('X')) {
@@ -27,6 +27,10 @@ public class TicTacToe {
 				break;
 			}
 			playerMove();
+			if (gameOver.win('O')) {
+				System.out.println("You Win");
+				break;
+			}
 		}
 	}
 	

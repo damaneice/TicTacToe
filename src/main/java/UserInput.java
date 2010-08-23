@@ -10,7 +10,8 @@ public class UserInput {
 	BufferedReader stdIn = new BufferedReader(new InputStreamReader( System.in));
 	  String userInput = "";
 	  try{
-	  	userInput = stdIn.readLine();
+		  while ((userInput = stdIn.readLine()).equals("")) {
+		  }
 	  }
 	  catch (IOException e) {
 		  	System.out.println(e.getMessage());
