@@ -11,6 +11,7 @@ public class UserInput {
 	  String userInput = "";
 	  try{
 		  while ((userInput = stdIn.readLine()).equals("")) {
+			  System.out.println("To move please enter the x,y coordinates in the following format 1,2 ");
 		  }
 	  }
 	  catch (IOException e) {

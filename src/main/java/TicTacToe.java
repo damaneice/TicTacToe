@@ -44,7 +44,6 @@ public class TicTacToe {
 
 	public void computerMove(){
 		Position move = findNextMove();
-		System.out.println(move);
 		if(move != null){
 			computerMark(move);
 			gameOver.incrementNumberOfMoves();

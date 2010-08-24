@@ -55,8 +55,14 @@ public class Board {
 	
 	public void print() {
 		for (int y = 0; y < board.length; y++) {
+			System.out.print(" ");
 			for (int x = 0; x < board.length; x++) {
-				System.out.print(board[x][y]);
+				if (board[x][y] != 0) {
+					System.out.print(board[x][y]);
+				}
+				else {
+					System.out.print(" ");
+				}
 				if((x+1)%3 != 0) {
 					System.out.print(" | ");
 				}
