@@ -58,6 +58,7 @@ public class GameOver {
 
 	public void incrementNumberOfMoves() {
 		numberOfMoves++;
+		System.out.println("Number of moves: " + numberOfMoves);
 	}
 	
 	public boolean isBoardFull(){

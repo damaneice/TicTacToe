@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class TicTacToe {
 	private Board board = new Board();
@@ -24,6 +27,10 @@ public class TicTacToe {
 			board.print();
 			if (gameOver.win('X')) {
 				System.out.println("Game Over");
+				break;
+			}
+			if(gameOver.isBoardFull()) {
+				System.out.println("Tie");
 				break;
 			}
 			playerMove();
@@ -60,34 +67,25 @@ public class TicTacToe {
 	}
 	
 	public Position findNextMove() {
-		Position position = winningMove.findWinningMove(board);
-		if (position != null){
-			return position;
-		} 
-		position = block.findBlockMove(board);
-		if (position != null){
-			return position;
-		} 
-		position = fork.createFork(board);
-		if (position != null){
-			return position;
-		} 
-		position = fork.blockFork(board);
-		if (position != null){
-			return position;
-		} 
-		position = center.playTheCenter(board);
-		if(position != null){
-			return position;
+		List<Position> listOfMoves = listOfMoves();
+		for (Position position : listOfMoves) {
+			if(position != null) {
+				return position;
+			}
 		}
-		position = oppositeCorner.playOppositeCorner(board);
-		if(position != null){
-			return position;
-		}
-		position = emptyCorner.markEmptyCorner(board);
-		if(position != null){
-			return position;
-		}
-		return emptySide.markMiddleSquareOnEmptySide(board);
+		return null;
+	}
+	
+	private List<Position> listOfMoves(){
+		List<Position> moves = new ArrayList<Position>();
+		moves.add(winningMove.findWinningMove(board));
+		moves.add(block.findBlockMove(board));
+		moves.add(fork.createFork(board));
+		moves.add(fork.blockFork(board));
+		moves.add(center.playTheCenter(board));
+		moves.add(oppositeCorner.playOppositeCorner(board));
+		moves.add(emptyCorner.markEmptyCorner(board));
+		moves.add(emptySide.markMiddleSquareOnEmptySide(board));
+		return moves;
 	}
 }
