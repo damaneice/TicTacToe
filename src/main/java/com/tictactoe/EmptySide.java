@@ -1,3 +1,5 @@
+package com.tictactoe;
+import static com.tictactoe.Square.*; 
 
 public class EmptySide {
 
@@ -34,10 +36,10 @@ public class EmptySide {
 		return isEmptySide(board.extractColumn(0));
 	}
 
-	private Boolean isEmptySide(char[] side) {
+	private Boolean isEmptySide(Square[] side) {
 		int numberOfEmptySqaures = 0;
 		for (int i = 0; i < 3; i++) {
-			if (side[i] == 0) {
+			if (side[i] == EMPTY) {
 				numberOfEmptySqaures++;
 			}
 		}

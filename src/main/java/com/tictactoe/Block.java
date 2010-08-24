@@ -1,21 +1,22 @@
+package com.tictactoe;
+import static com.tictactoe.Square.*; 
 
 public class Block extends Strategy{
 
 	public Position findBlockMove(Board board) {
-		char mark = 'O';
-		Position coordinates = twoInARowDown(board, mark);
+		Position coordinates = twoInARowDown(board, O);
 		if (coordinates != null) {
 			return coordinates;
 		}
-		coordinates = twoInARowAcross(board, mark);
+		coordinates = twoInARowAcross(board, O);
 		if (coordinates != null) {
 			return coordinates;
 		}
-		coordinates = twoDownDiagonal(board, mark);
+		coordinates = twoDownDiagonal(board, O);
 		if (coordinates != null){
 			return coordinates;
 		}
-		return twoUpDiagonal(board, mark);
+		return twoUpDiagonal(board, O);
 	}
 	
 }

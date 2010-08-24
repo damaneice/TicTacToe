@@ -1,7 +1,14 @@
+package com.tictactoe;
+import static com.tictactoe.Square.*; 
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import org.junit.Before;
 import org.junit.Test;
+import com.tictactoe.Board;
+import com.tictactoe.EmptySide;
+import com.tictactoe.Position;
+
 
 public class EmptySideTest {
 	
@@ -16,16 +23,16 @@ public class EmptySideTest {
 	@Test
 	public void shouldMarkMiddleSquareOnLeftSide() throws Exception {
 		board = new Board();
-		board.getBoard()[2][0] = 'X';
-		board.getBoard()[2][2] = 'X';
+		board.getBoard()[2][0] = X;
+		board.getBoard()[2][2] = X;
 		assertThat(emptySide.markMiddleSquareOnEmptySide(board), is(new Position(0,1)));
 	}
 	
 	@Test
 	public void shouldMarkMiddleSquareOnTopSide() throws Exception {
 		board = new Board();
-		board.getBoard()[0][1] = 'X';
-		board.getBoard()[2][2] = 'X';
+		board.getBoard()[0][1] = X;
+		board.getBoard()[2][2] = X;
 		
 		assertThat(emptySide.markMiddleSquareOnEmptySide(board), is(new Position(1,0)));
 	}
@@ -33,8 +40,8 @@ public class EmptySideTest {
 	@Test
 	public void shouldMarkMiddleSquareOnBottomSide() throws Exception {
 		board = new Board();
-		board.getBoard()[0][1] = 'X';
-		board.getBoard()[1][0] = 'X';
+		board.getBoard()[0][1] = X;
+		board.getBoard()[1][0] = X;
 		
 		assertThat(emptySide.markMiddleSquareOnEmptySide(board), is(new Position(1,2)));
 	}
@@ -42,8 +49,8 @@ public class EmptySideTest {
 	@Test
 	public void shouldMarkMiddleSquareOnRightSide() throws Exception {
 		board = new Board();
-		board.getBoard()[0][0] = 'X';
-		board.getBoard()[0][2] = 'X';
+		board.getBoard()[0][0] = X;
+		board.getBoard()[0][2] = X;
 		
 		assertThat(emptySide.markMiddleSquareOnEmptySide(board), is(new Position(2,1)));
 	}

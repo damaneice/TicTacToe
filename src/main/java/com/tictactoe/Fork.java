@@ -1,3 +1,5 @@
+package com.tictactoe;
+import static com.tictactoe.Square.*; 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -6,17 +8,17 @@ import java.util.Set;
 
 public class Fork {
 
-	public List<Position> findPotentialForkInRow(Board board, int rowNumber, char mark) {
+	public List<Position> findPotentialForkInRow(Board board, int rowNumber, Square mark) {
 		List<Position> positions = new ArrayList<Position>();
 		int numberOfEmptyBoxes = 0;
 		int numberOfMarks = 0;
 		for (int x = 0; x < board.getBoard().length; x++){
-			char box = board.getBoard()[x][rowNumber];
-			if (box == 0){
+			Square square = board.getBoard()[x][rowNumber];
+			if (square == EMPTY){
 				numberOfEmptyBoxes++;
 				positions.add(new Position(x,rowNumber));
 			}
-			else if(box == mark){
+			else if(square == mark){
 				numberOfMarks++;
 			}
 		}
@@ -26,13 +28,13 @@ public class Fork {
 		return null;
 	}
 	
-	public List<Position> findPotentialForkInColumn(Board board, int columnNumber, char mark) {
+	public List<Position> findPotentialForkInColumn(Board board, int columnNumber, Square mark) {
 		List<Position> positions = new ArrayList<Position>();
 		int numberOfEmptyBoxes = 0;
 		int numberOfMarks = 0;
 		for (int y = 0; y < board.getBoard().length; y++){
-			char box = board.getBoard()[columnNumber][y];
-			if (box == 0){
+			Square box = board.getBoard()[columnNumber][y];
+			if (box == EMPTY){
 				numberOfEmptyBoxes++;
 				positions.add(new Position(columnNumber,y));
 			}
@@ -46,16 +48,16 @@ public class Fork {
 		return null;
 	}
 
-	public List<Position> findPotentialForkInDownDiagonal(Board board, char mark) {
+	public List<Position> findPotentialForkInDownDiagonal(Board board, Square mark) {
 		List<Position> positions = new ArrayList<Position>();
 		int numberOfEmptyBoxes = 0;
 		int numberOfMarks = 0;
 		for (int i = 0; i < board.getBoard().length; i++) {
-			char box = board.getBoard()[i][i];
-			if (box == 0) {
+			Square square = board.getBoard()[i][i];
+			if (square == EMPTY) {
 				numberOfEmptyBoxes++;
 				positions.add(new Position(i, i));
-			} else if (box == mark) {
+			} else if (square == mark) {
 				numberOfMarks++;
 			}
 		}
@@ -66,16 +68,16 @@ public class Fork {
 		return null;
 	} 
 
-	public List<Position> findPotentialForkInUpDiagonal(Board board, char mark) {
+	public List<Position> findPotentialForkInUpDiagonal(Board board, Square mark) {
 		List<Position> positions = new ArrayList<Position>();
 		int numberOfEmptyBoxes = 0;
 		int numberOfMarks = 0;
 		for (int x = 0, y = 2; x < board.getBoard().length; x++, y--) {
-			char box = board.getBoard()[x][y];
-			if (box == 0) {
+			Square square = board.getBoard()[x][y];
+			if (square == EMPTY) {
 				numberOfEmptyBoxes++;
 				positions.add(new Position(x, y));
-			} else if (box == mark) {
+			} else if (square == mark) {
 				numberOfMarks++;
 			}
 		}
@@ -86,7 +88,7 @@ public class Fork {
 	}
 	
 	public Position blockFork(Board board){
-		List<Position> potentialForkPositionsWithDuplicates = findMoveToCreateFork(board, 'O');
+		List<Position> potentialForkPositionsWithDuplicates = findMoveToCreateFork(board, O);
 		List<Position> forkPositions = forkPositions(potentialForkPositionsWithDuplicates);
 		if (!forkPositions.isEmpty()) {
 			return forkPositions.get(0);
@@ -95,7 +97,7 @@ public class Fork {
 	}
 	
 	public Position createFork(Board board) {
-		List<Position> potentialForkPositionsWithDuplicates = findMoveToCreateFork(board, 'X');
+		List<Position> potentialForkPositionsWithDuplicates = findMoveToCreateFork(board, X);
 		List<Position> forkPositions = forkPositions(potentialForkPositionsWithDuplicates);
 		if (!forkPositions.isEmpty()) {
 			return forkPositions.get(0);
@@ -103,7 +105,7 @@ public class Fork {
 		return null;
 	}
 
-	private List<Position> findMoveToCreateFork(Board board, char mark) {
+	private List<Position> findMoveToCreateFork(Board board, Square mark) {
 		List<Position> potentialForkPositionsWithDuplicates = new ArrayList<Position>();
 		List<Position> findPotentialForkInRow = findPotentialForkInRow(board,0,mark);
 		if(findPotentialForkInRow != null){

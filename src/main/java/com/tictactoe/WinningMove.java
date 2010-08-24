@@ -1,20 +1,21 @@
+package com.tictactoe;
+import static com.tictactoe.Square.X;
 
 public class WinningMove extends Strategy{
 	
 	public Position findWinningMove(Board board) {
-		char mark = 'X';
-		Position coordinates = twoInARowDown(board, mark);
+		Position coordinates = twoInARowDown(board, X);
 		if (coordinates != null) {
 			return coordinates;
 		}
-		coordinates = twoInARowAcross(board, mark);
+		coordinates = twoInARowAcross(board, X);
 		if (coordinates != null) {
 			return coordinates;
 		}
-		coordinates = twoDownDiagonal(board, mark);
+		coordinates = twoDownDiagonal(board, X);
 		if (coordinates != null){
 			return coordinates;
 		}
-		return twoUpDiagonal(board, mark);
+		return twoUpDiagonal(board, X);
 	}
 }

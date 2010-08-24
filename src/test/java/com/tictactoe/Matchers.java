@@ -1,6 +1,10 @@
+package com.tictactoe;
+
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
+import com.tictactoe.Position;
+
 
 public class Matchers {
 

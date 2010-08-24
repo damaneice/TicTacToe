@@ -1,4 +1,6 @@
+package com.tictactoe;
 import java.util.ArrayList;
+import static com.tictactoe.Square.*; 
 import java.util.List;
 
 
@@ -25,7 +27,7 @@ public class TicTacToe {
 		while(!gameOver.isBoardFull()){
 			computerMove();
 			board.print();
-			if (gameOver.win('X')) {
+			if (gameOver.win(X)) {
 				System.out.println("Game Over");
 				break;
 			}
@@ -34,7 +36,7 @@ public class TicTacToe {
 				break;
 			}
 			playerMove();
-			if (gameOver.win('O')) {
+			if (gameOver.win(O)) {
 				System.out.println("You Win");
 				break;
 			}
@@ -59,11 +61,11 @@ public class TicTacToe {
 	
 	
 	public void computerMark(Position position){
-		board.getBoard()[position.getX()][position.getY()] = 'X';
+		board.getBoard()[position.getX()][position.getY()] = X;
 	}
 	
 	public void playerMark(Position position){
-		board.getBoard()[position.getX()][position.getY()] = 'O';
+		board.getBoard()[position.getX()][position.getY()] = O;
 	}
 	
 	public Position findNextMove() {

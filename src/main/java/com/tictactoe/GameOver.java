@@ -1,3 +1,5 @@
+package com.tictactoe;
+
 public class GameOver {
 
 	private Board board;
@@ -7,48 +9,48 @@ public class GameOver {
 		this.board = board;
 	}
 
-	public boolean win(char typeOfMark) {
+	public boolean win(Square typeOfMark) {
 
 		return hasWinInColumn(typeOfMark) || hasWinInRow(typeOfMark)
 				|| hasWinInDownDiagonal(typeOfMark)
 				|| hasWinInUpDiagonal(typeOfMark);
 	}
 
-	private boolean hasWinInDownDiagonal(char typeOfMark) {
-		char[] diagonal = board.extractDownDiagonal();
+	private boolean hasWinInDownDiagonal(Square typeOfMark) {
+		Square[] diagonal = board.extractDownDiagonal();
 		if (isWinInSection(diagonal, typeOfMark))
 			return true;
 
 		return false;
 	}
 
-	private boolean hasWinInUpDiagonal(char typeOfMark) {
-		char[] diagonal = board.extractUpDiagonal();
+	private boolean hasWinInUpDiagonal(Square typeOfMark) {
+		Square[] diagonal = board.extractUpDiagonal();
 		if (isWinInSection(diagonal, typeOfMark))
 			return true;
 
 		return false;
 	}
 
-	private boolean hasWinInRow(char typeOfMark) {
+	private boolean hasWinInRow(Square typeOfMark) {
 		for (int rowNumber = 0; rowNumber < board.getBoard().length; rowNumber++) {
-			char[] row = board.extractRow(rowNumber);
+			Square[] row = board.extractRow(rowNumber);
 			if (isWinInSection(row, typeOfMark))
 				return true;
 		}
 		return false;
 	}
 
-	private boolean hasWinInColumn(char typeOfMark) {
+	private boolean hasWinInColumn(Square typeOfMark) {
 		for (int columnNumber = 0; columnNumber < board.getBoard().length; columnNumber++) {
-			char[] column = board.extractColumn(columnNumber);
+			Square[] column = board.extractColumn(columnNumber);
 			if (isWinInSection(column, typeOfMark))
 				return true;
 		}
 		return false;
 	}
 
-	private boolean isWinInSection(char[] column, char typeOfMark) {
+	private boolean isWinInSection(Square[] column, Square typeOfMark) {
 		int numberOfMarks = board.countOfNumberOfMarks(column, typeOfMark);
 
 		if (numberOfMarks == 3)

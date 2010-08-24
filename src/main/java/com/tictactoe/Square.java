@@ -1,10 +1,11 @@
+package com.tictactoe;
 
-public enum Box {
+public enum Square {
 	X('X'), O('O'), EMPTY(0);
 	
 	private int mark;
 
-	 private Box(int mark) {
+	 private Square(int mark) {
 	   this.mark = mark;
 	 }
 
