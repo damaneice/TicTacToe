@@ -33,7 +33,7 @@ public class GameOver {
 	}
 
 	private boolean hasWinInRow(Square typeOfMark) {
-		for (int rowNumber = 0; rowNumber < board.getBoard().length; rowNumber++) {
+		for (int rowNumber = 0; rowNumber < Board.SIZE; rowNumber++) {
 			Square[] row = board.extractRow(rowNumber);
 			if (isWinInSection(row, typeOfMark))
 				return true;
@@ -42,7 +42,7 @@ public class GameOver {
 	}
 
 	private boolean hasWinInColumn(Square typeOfMark) {
-		for (int columnNumber = 0; columnNumber < board.getBoard().length; columnNumber++) {
+		for (int columnNumber = 0; columnNumber < Board.SIZE; columnNumber++) {
 			Square[] column = board.extractColumn(columnNumber);
 			if (isWinInSection(column, typeOfMark))
 				return true;

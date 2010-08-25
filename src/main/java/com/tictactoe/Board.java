@@ -2,12 +2,12 @@ package com.tictactoe;
 import static com.tictactoe.Square.*; 
 
 public class Board {
-
-	private Square[][] board = new Square[3][3];
+	public final static int SIZE = 3;
+	private Square[][] board = new Square[SIZE][SIZE];
 	
 	public Board(){
-		for (int x = 0; x < 3; x++) {
-			for (int y = 0; y < 3; y++) {
+		for (int x = 0; x < SIZE; x++) {
+			for (int y = 0; y < SIZE; y++) {
 				board[x][y] = EMPTY;
 			}
 		}
@@ -26,24 +26,24 @@ public class Board {
 	}
 
 	public Square[] extractRow(int rowNumber) {
-		Square [] row = new Square[3];
-		for (int i = 0; i < getBoard().length; i++){
+		Square [] row = new Square[SIZE];
+		for (int i = 0; i < SIZE; i++){
 			row[i] = getBoard()[i][rowNumber];
 		}
 		return row;
 	}
 	
 	public Square[] extractDownDiagonal() {
-		Square [] diagonal = new Square[3];
-		for (int i = 0; i < getBoard().length; i++){
+		Square [] diagonal = new Square[SIZE];
+		for (int i = 0; i < SIZE; i++){
 			diagonal[i] = getBoard()[i][i];
 		}
 		return diagonal;
 	}
 	
 	public Square[] extractUpDiagonal() {
-		Square[] diagonal = new Square[3];
-		for (int x = 0, y = 2; x < getBoard().length; x++, y--){
+		Square[] diagonal = new Square[SIZE];
+		for (int x = 0, y = SIZE - 1; x < SIZE; x++, y--){
 			diagonal[x] = getBoard()[x][y];
 		}
 		return diagonal;
@@ -60,16 +60,16 @@ public class Board {
 	}
 	
 	public void print() {
-		for (int y = 0; y < board.length; y++) {
+		for (int y = 0; y < SIZE; y++) {
 			System.out.print(" ");
-			for (int x = 0; x < board.length; x++) {
+			for (int x = 0; x < SIZE; x++) {
 				if (board[x][y] != EMPTY) {
 					System.out.print(board[x][y]);
 				}
 				else {
 					System.out.print(" ");
 				}
-				if((x+1)%3 != 0) {
+				if((x+1)%SIZE != 0) {
 					System.out.print(" | ");
 				}
 			}

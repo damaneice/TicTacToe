@@ -12,7 +12,7 @@ public class Fork {
 		List<Position> positions = new ArrayList<Position>();
 		int numberOfEmptyBoxes = 0;
 		int numberOfMarks = 0;
-		for (int x = 0; x < board.getBoard().length; x++){
+		for (int x = 0; x < Board.SIZE; x++){
 			Square square = board.getBoard()[x][rowNumber];
 			if (square == EMPTY){
 				numberOfEmptyBoxes++;
@@ -32,7 +32,7 @@ public class Fork {
 		List<Position> positions = new ArrayList<Position>();
 		int numberOfEmptyBoxes = 0;
 		int numberOfMarks = 0;
-		for (int y = 0; y < board.getBoard().length; y++){
+		for (int y = 0; y < Board.SIZE; y++){
 			Square box = board.getBoard()[columnNumber][y];
 			if (box == EMPTY){
 				numberOfEmptyBoxes++;
@@ -52,7 +52,7 @@ public class Fork {
 		List<Position> positions = new ArrayList<Position>();
 		int numberOfEmptyBoxes = 0;
 		int numberOfMarks = 0;
-		for (int i = 0; i < board.getBoard().length; i++) {
+		for (int i = 0; i < Board.SIZE; i++) {
 			Square square = board.getBoard()[i][i];
 			if (square == EMPTY) {
 				numberOfEmptyBoxes++;
@@ -72,7 +72,7 @@ public class Fork {
 		List<Position> positions = new ArrayList<Position>();
 		int numberOfEmptyBoxes = 0;
 		int numberOfMarks = 0;
-		for (int x = 0, y = 2; x < board.getBoard().length; x++, y--) {
+		for (int x = 0, y = Board.SIZE - 1; x < Board.SIZE; x++, y--) {
 			Square square = board.getBoard()[x][y];
 			if (square == EMPTY) {
 				numberOfEmptyBoxes++;

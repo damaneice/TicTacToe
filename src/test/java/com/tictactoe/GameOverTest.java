@@ -2,6 +2,7 @@ package com.tictactoe;
 import static com.tictactoe.Square.*; 
 
 import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.*;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Before;
@@ -13,12 +14,12 @@ import com.tictactoe.GameOver;
 public class GameOverTest {
 	
 	private Board board;
-	private GameOver w;
+	private GameOver gameOver;
  	
 	@Before
 	public void setUp(){
 		board = new Board();
-		w = new GameOver(board);
+		gameOver = new GameOver(board);
 	}
 	
 	@Test
@@ -28,7 +29,7 @@ public class GameOverTest {
 		board.getBoard()[0][2] = X;
 
 
-		assertThat(w.win(X), is(true));
+		assertThat(gameOver.win(X), is(true));
 	}
 	 
 	@Test
@@ -37,7 +38,7 @@ public class GameOverTest {
 		board.getBoard()[1][0] = X;
 		board.getBoard()[2][0] = X;
 	
-		assertThat(w.win(X), is(true));
+		assertThat(gameOver.win(X), is(true));
 	}
 	
 	@Test
@@ -46,7 +47,7 @@ public class GameOverTest {
 		board.getBoard()[1][1] = X;
 		board.getBoard()[2][2] = X;
 		
-		assertThat(w.win(X), is(true));
+		assertThat(gameOver.win(X), is(true));
 	}
 	
 	@Test
@@ -55,10 +56,16 @@ public class GameOverTest {
 		board.getBoard()[1][1] = X;
 		board.getBoard()[2][0] = X;
 		
-		 assertThat(w.win(X), is(true));
+		 assertThat(gameOver.win(X), is(true));
 	}
 	
-	
+	@Test
+	public void shouldEndGameAfterNineMoves() throws Exception {
+		for (int i = 0; i < 9; i++) {
+			gameOver.incrementNumberOfMoves();
+		}
+		assertThat(gameOver.isBoardFull(), is(true));
+	}
 
 	
 

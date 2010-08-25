@@ -38,7 +38,7 @@ public class EmptySide {
 
 	private Boolean isEmptySide(Square[] side) {
 		int numberOfEmptySqaures = 0;
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < Board.SIZE; i++) {
 			if (side[i] == EMPTY) {
 				numberOfEmptySqaures++;
 			}

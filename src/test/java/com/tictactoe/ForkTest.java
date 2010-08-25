@@ -93,7 +93,7 @@ public class ForkTest {
 	@Test
 	public void shouldNotFindPotentialForkInUpDiagonal() throws Exception {
 		board.getBoard()[0][2] = X;
-		board.getBoard()[1][1] = EMPTY;
+		board.getBoard()[1][1] = O;
 		List<Position> potentialForks = fork.findPotentialForkInUpDiagonal(board,X);
 		
 		assertNull(potentialForks);

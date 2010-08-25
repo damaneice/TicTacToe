@@ -69,7 +69,7 @@ public class TicTacToe {
 	}
 	
 	public Position findNextMove() {
-		List<Position> listOfMoves = listOfMoves();
+		List<Position> listOfMoves = getAllPossibleMoves();
 		for (Position position : listOfMoves) {
 			if(position != null) {
 				return position;
@@ -78,7 +78,7 @@ public class TicTacToe {
 		return null;
 	}
 	
-	private List<Position> listOfMoves(){
+	private List<Position> getAllPossibleMoves(){
 		List<Position> moves = new ArrayList<Position>();
 		moves.add(winningMove.findWinningMove(board));
 		moves.add(block.findBlockMove(board));
