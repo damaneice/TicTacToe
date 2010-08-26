@@ -17,7 +17,8 @@ public class TicTacToe {
 	private OppositeCorner oppositeCorner = new OppositeCorner();
 	private EmptyCorner emptyCorner = new EmptyCorner();
 	private EmptySide emptySide = new EmptySide();
-	private UserInput userInput = new UserInput();
+	private IO io = new IO();
+	private UserInput userInput = new UserInput(io);
 	
   
 	
@@ -29,24 +30,24 @@ public class TicTacToe {
 	public void play() throws IOException{
 		while(true){
 			computerMove();
-			board.print();
+			io.print(board);
 			if (gameOver.win(X)) {
-				System.out.println("Game Over");
+				io.printWinMessage();
 				break;
 			}
 			if(gameOver.isBoardFull()) {
-				System.out.println("Tie");
+				io.printTieMessage();
 				break;
 			}
 			playerMove();
 			if (gameOver.win(O)) {
-				System.out.println("You Win");
+				io.printGameOverMessage();
 				break;
 			}
 		}
 	}
 	
-	public void playerMove() throws IOException{
+	private void playerMove() throws IOException{
 		Position userMove = userInput.userMove();
 		if (userMove != null) {
 			playerMark(userMove);
@@ -54,7 +55,7 @@ public class TicTacToe {
 		}
 	}
 
-	public void computerMove(){
+	private void computerMove(){
 		Position move = findNextMove();
 		if(move != null){
 			computerMark(move);
@@ -63,15 +64,15 @@ public class TicTacToe {
 	}
 	
 	
-	public void computerMark(Position position){
+	private void computerMark(Position position){
 		board.getBoard()[position.getX()][position.getY()] = X;
 	}
 	
-	public void playerMark(Position position){
+	private void playerMark(Position position){
 		board.getBoard()[position.getX()][position.getY()] = O;
 	}
 	
-	public Position findNextMove() {
+	Position findNextMove() {
 		List<Position> listOfMoves = getAllPossibleMoves();
 		for (Position position : listOfMoves) {
 			if(position != null) {

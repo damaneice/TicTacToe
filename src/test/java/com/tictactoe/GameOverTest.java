@@ -1,14 +1,10 @@
 package com.tictactoe;
-import static com.tictactoe.Square.*; 
-
+import static com.tictactoe.Square.X;
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Before;
 import org.junit.Test;
-import com.tictactoe.Board;
-import com.tictactoe.GameOver;
 
 
 public class GameOverTest {

@@ -58,22 +58,4 @@ public class Board {
 		}
 		return numberOfMarks;
 	}
-	
-	public void print() {
-		for (int y = 0; y < SIZE; y++) {
-			System.out.print(" ");
-			for (int x = 0; x < SIZE; x++) {
-				if (board[x][y] != EMPTY) {
-					System.out.print(board[x][y]);
-				}
-				else {
-					System.out.print(" ");
-				}
-				if((x+1)%SIZE != 0) {
-					System.out.print(" | ");
-				}
-			}
-			System.out.println();
-		}
-	}
 }	

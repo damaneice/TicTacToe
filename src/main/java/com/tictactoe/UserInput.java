@@ -1,25 +1,26 @@
 package com.tictactoe;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
 public class UserInput {
+	private IO io = new IO();
 
+	public UserInput(IO io){
+		this.io = io;
+	}
 	
-	public String readUserInput() throws IOException{
-	BufferedReader stdIn = new BufferedReader(new InputStreamReader( System.in));
-	 String userInput = stdIn.readLine();
+	private String readUserInput() throws IOException{
+	 String userInput = io.readIn();
 	  while (!isValidInput(userInput)) {
-		  userInput = stdIn.readLine();
+		  userInput = io.readIn();
 		  System.out.println("To move please enter the x,y coordinates in the following format 1,2 ");
 	  }
 	  return userInput;
 	}
 	
-	public boolean isValidInput(String userInput){
+	private boolean isValidInput(String userInput){
 		 Pattern p = Pattern.compile("^\\d+,\\d+");
 	     Matcher m = p.matcher(userInput);
 	     return m.find();
@@ -27,8 +28,11 @@ public class UserInput {
 	
 	public Position userMove() throws IOException{
 		String userText = readUserInput();
+		return convertUserInputIntoPosition(userText);
+	}
 
+	private Position convertUserInputIntoPosition(String userText) {
 		String[] xy = userText.split(",");
-		return new Position(Integer.parseInt(xy[0]), Integer.parseInt(xy[1]));
+		return  new Position(Integer.parseInt(xy[0]), Integer.parseInt(xy[1]));
 	}
 }
