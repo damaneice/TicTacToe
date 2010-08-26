@@ -1,12 +1,10 @@
 package com.tictactoe;
-import static com.tictactoe.Square.*; 
+import static com.tictactoe.Square.O;
+import static com.tictactoe.Square.X;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
-import com.tictactoe.Board;
-import com.tictactoe.Position;
-import com.tictactoe.TicTacToe;
 
 
 public class TicTacToeTest {

@@ -1,6 +1,9 @@
 package com.tictactoe;
+import static com.tictactoe.Square.O;
+import static com.tictactoe.Square.X;
+
+import java.io.IOException;
 import java.util.ArrayList;
-import static com.tictactoe.Square.*; 
 import java.util.List;
 
 
@@ -23,8 +26,8 @@ public class TicTacToe {
 		gameOver = new GameOver(board);
 	}
 	
-	public void play(){
-		while(!gameOver.isBoardFull()){
+	public void play() throws IOException{
+		while(true){
 			computerMove();
 			board.print();
 			if (gameOver.win(X)) {
@@ -43,7 +46,7 @@ public class TicTacToe {
 		}
 	}
 	
-	public void playerMove() {
+	public void playerMove() throws IOException{
 		Position userMove = userInput.userMove();
 		if (userMove != null) {
 			playerMark(userMove);
